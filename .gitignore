@@ -1,0 +1,8 @@
+# Ignorar o ambiente virtual
+venv-cursos-api/
+venv/
+
+# Ignorar arquivos do sistema
+__pycache__/
+*.pyc
+*.pyo
