@@ -9,8 +9,8 @@ Esta API foi desenvolvida utilizando **FastAPI** e **SQLAlchemy** para gerenciar
 - ⚡ **Framework:** FastAPI
 - 🏗 **ORM:** SQLAlchemy (com AsyncSession)
 - 🗄 **Banco de Dados:** PostgreSQL
-- 💻 IDE: VSCode
--🔑 Testes de API: Postman
+- 💻 **IDE:** VSCode
+- 🔑 **Testes de API:** Postman
 
 Desenvolvida com **arquitetura modular**, a API garante eficiência e manutenibilidade, facilitando futuras expansões e integrações!
 
