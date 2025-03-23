@@ -26,6 +26,7 @@ Desenvolvida com **arquitetura modular**, a API garante eficiência e manutenibi
 ├── 📂 core  # Configuração do banco e dependências
 ├── 📂 models # Modelos do banco de dados
 ├── 📂 schemas # Esquemas de validação
+├── 📜 README.md # Documentação do projeto
 ├── 📜 criar_tabelas.py # Script para criação do banco
 ├── 📜 main.py # Arquivo principal para rodar a API
 ├── 📜 requirements.txt # Dependências do projeto
@@ -57,7 +58,7 @@ Com essa organização clara, o projeto facilita o desenvolvimento colaborativo 
    ```
 5. Execute a API:
    ```bash
-   uvicorn main:app --reload
+   python main.py
    ```
 
 Pronto! A API estará rodando e pronta para ser testada. 🚀
