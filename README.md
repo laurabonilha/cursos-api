@@ -60,7 +60,7 @@ Com essa organização clara, o projeto facilita o desenvolvimento colaborativo 
    uvicorn main:app --reload
    ```
 
-Pronto! Sua API estará rodando e pronta para ser testada. 🚀
+Pronto! A API estará rodando e pronta para ser testada. 🚀
 
 ---
 
@@ -170,13 +170,19 @@ Com essa interface, você pode testar requisições de maneira intuitiva e visua
 
 ---
 
-## 🎯 Conclusão
+## 🚧 Melhorias em Progresso
 
-Esta API é um grande passo para quem deseja estruturar um backend robusto e bem documentado. Com sua arquitetura bem definida, suporte a banco de dados assíncrono e integração facilitada, ela pode ser facilmente expandida para atender a novas demandas.
+Estou constantemente aprimorando a API para torná-la mais robusta e fácil de usar. Atualmente, estou trabalhando nas seguintes melhorias:
 
-🔹 **Fácil de usar**
-🔹 **Escalável e modular**
-🔹 **Alta performance com FastAPI**
+🎨 **Interface Gráfica:** Em andamento a criação de uma interface gráfica simples para facilitar a visualização dos cursos cadastrados e permitir a inserção de novos dados diretamente pela interface.
+
+⚙️ **Novos Endpoints:** Planejamento para adicionar novos endpoints para recursos como filtragem avançada e busca de cursos específicos.
+
+🛠 **Otimizações de Performance:** Foco em melhorias para garantir que a API seja mais eficiente e escalável conforme o número de requisições aumente.
+
+🔐 **Autenticação e Segurança:** Implementação de mecanismos de autenticação para garantir maior segurança nas interações com a API.
+
+Fique à vontade para contribuir e sugerir outras melhorias!
 
 ---
 
