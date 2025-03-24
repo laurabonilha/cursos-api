@@ -11,6 +11,7 @@ Esta API foi desenvolvida utilizando **FastAPI** e **SQLAlchemy** para gerenciar
 - 🗄 **Banco de Dados:** PostgreSQL
 - 💻 **IDE:** VSCode
 - 🔑 **Testes de API:** Postman
+- 🖥 **Interface Gráfica:** customtkinter para criar uma interface visual que interage com a API de Cursos.
 
 Desenvolvida com **arquitetura modular**, a API garante eficiência e manutenibilidade, facilitando futuras expansões e integrações!
 
@@ -19,17 +20,24 @@ Desenvolvida com **arquitetura modular**, a API garante eficiência e manutenibi
 ## 📂 Estrutura do Projeto
 
 ```
-📦 projeto
+📦 cursos-api
 ├── 📂 api
 │   ├── 📂 v1
 │   │   ├── 📂 endpoints
-├── 📂 core  # Configuração do banco e dependências
-├── 📂 models # Modelos do banco de dados
-├── 📂 schemas # Esquemas de validação
-├── 📜 README.md # Documentação do projeto
-├── 📜 criar_tabelas.py # Script para criação do banco
-├── 📜 main.py # Arquivo principal para rodar a API
-├── 📜 requirements.txt # Dependências do projeto
+├── 📂 core
+├── 📂 models
+├── 📂 schemas
+├── 📂 services  # Pasta para chamadas à API
+│   ├── 📜 crud.py  # Funções para interagir com a API
+├── 📂 gui  # Interface gráfica
+│   ├── 📜 main_gui.py  # Arquivo principal da interface gráfica
+│   ├── 📜 pages.py  # Definição das telas
+│   ├── 📜 components.py  # Componentes reutilizáveis
+│   ├── 📜 utils.py  # Funções auxiliares
+├── 📜 README.md
+├── 📜 criar_tabelas.py
+├── 📜 main.py
+├── 📜 requirements.txt
 ```
 
 Com essa organização clara, o projeto facilita o desenvolvimento colaborativo e permite uma escalabilidade eficiente.
