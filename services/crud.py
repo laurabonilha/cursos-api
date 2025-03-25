@@ -5,7 +5,7 @@ Arquivo destinado a armazenar as funções que devem ser feitas comunicando a in
 import requests
 
 # URL da API onde os cursos estão sendo gerenciados
-API_URL = "http://localhost:8000/cursos"
+API_URL = "http://localhost:8000/api/v1/cursos"
 
 # Função para adicionar um curso
 def adicionar_curso(titulo: str, aulas: int, horas: int):
@@ -23,7 +23,7 @@ def adicionar_curso(titulo: str, aulas: int, horas: int):
 def obter_cursos():
     resposta = requests.get(API_URL)
     if resposta.status_code == 200:
-        return resposta.json()  # Retorna a lista de cursos
+        return resposta.json()  # Retorna a lista de cursos em um dicionário
     else:
         print('Erro ao obter cursos')
         return []

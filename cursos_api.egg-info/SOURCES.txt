@@ -1,0 +1,9 @@
+README.md
+setup.py
+cursos_api.egg-info/PKG-INFO
+cursos_api.egg-info/SOURCES.txt
+cursos_api.egg-info/dependency_links.txt
+cursos_api.egg-info/requires.txt
+cursos_api.egg-info/top_level.txt
+services/__init__.py
+services/crud.py

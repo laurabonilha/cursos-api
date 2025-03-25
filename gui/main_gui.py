@@ -1,25 +1,22 @@
-'''
-Arquivo principal que gerencia a interface gráfica
-Esse arquivo inicializa a interface e carrega a página inicial.
-'''
-
 import customtkinter as ctk
-from pages import HomePage
+import json
+from gui.pages import Pages
 
-# Configuração inicial do tema
+
+'''
+COMPONENTES DE INTERFACE GRÁFICA
+'''
+
+# Configuração inicial
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
-class App(ctk.CTk):
-    def __init__(self):
-        super().__init__()
-        self.geometry("600x400")
-        self.title("Gerenciamento de Cursos")
+# Janela principal
+janela = ctk.CTk()
+janela.geometry("400x500")
+janela.title("Menu de Opções")
 
-        # Página inicial
-        self.home_page = HomePage(self)
-        self.home_page.pack(expand=True, fill="both")
+pages = Pages(janela)
+pages.mostrar_menu_principal()
 
-if __name__ == "__main__":
-    app = App()
-    app.mainloop()
+janela.mainloop()
