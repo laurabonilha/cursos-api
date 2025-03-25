@@ -7,9 +7,12 @@ import customtkinter as ctk
 
 def create_label(parent, text):
     '''Cria um label'''
-    ctk.set_appearance_mode("dark")
-    ctk.set_default_color_theme("blue")
-    label = tk.Label(parent, text=text, font=('Poppins', 12))
+    label = ctk.CTkLabel(
+        parent,
+        text=text,
+        font=('Poppins', 12),
+        text_color='white'
+    )
     label.pack(pady=5)
     return label
 

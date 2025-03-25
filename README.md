@@ -11,7 +11,7 @@ Esta API foi desenvolvida utilizando **FastAPI** e **SQLAlchemy** para gerenciar
 - 🗄 **Banco de Dados:** PostgreSQL
 - 💻 **IDE:** VSCode
 - 🔑 **Testes de API:** Postman
-- 🖥 **Interface Gráfica:** customtkinter para criar uma interface visual que interage com a API de Cursos.
+- 🖥 **Interface Gráfica:** Customtkinter para criar uma interface visual que interage com a API de Cursos.
 
 Desenvolvida com **arquitetura modular**, a API garante eficiência e manutenibilidade, facilitando futuras expansões e integrações!
 
@@ -21,23 +21,34 @@ Desenvolvida com **arquitetura modular**, a API garante eficiência e manutenibi
 
 ```
 📦 cursos-api
-├── 📂 api
-│   ├── 📂 v1
-│   │   ├── 📂 endpoints
-├── 📂 core
-├── 📂 models
-├── 📂 schemas
-├── 📂 services  # Pasta para chamadas à API
-│   ├── 📜 crud.py  # Funções para interagir com a API
+├── 📂 .vscode  # Configurações do VS Code
+│   ├── 📜 launch.json  # Configuração de depuração
+├── 📂 api  # Código da API
+│   ├── 📂 endpoints  # Rotas da API
+│   │   ├── 📜 api.py  # Arquivo com definições de rotas
+├── 📂 core  # Configurações centrais do projeto
+│   ├── 📜 configs.py  # Configurações gerais
+│   ├── 📜 database.py  # Conexão com o banco de dados
+│   ├── 📜 deps.py  # Dependências da API
 ├── 📂 gui  # Interface gráfica
+│   ├── 📜 componentes.py  # Componentes reutilizáveis da UI
 │   ├── 📜 main_gui.py  # Arquivo principal da interface gráfica
 │   ├── 📜 pages.py  # Definição das telas
-│   ├── 📜 components.py  # Componentes reutilizáveis
-│   ├── 📜 utils.py  # Funções auxiliares
-├── 📜 README.md
-├── 📜 criar_tabelas.py
-├── 📜 main.py
-├── 📜 requirements.txt
+├── 📂 models  # Modelos do banco de dados
+│   ├── 📜 _all_models.py  # Provavelmente importa todos os modelos
+│   ├── 📜 curso_model.py  # Modelo do curso
+├── 📂 schemas  # Definições de schemas (Pydantic)
+│   ├── 📜 curso_schema.py  # Schema para curso
+├── 📂 services  # Lógica de negócio e chamadas à API
+│   ├── 📜 __init__.py
+│   ├── 📜 crud.py  # Operações CRUD
+├── 📜 .gitignore  # Arquivos a serem ignorados pelo Git
+├── 📜 criar_tabelas.py  # Script para criação de tabelas no banco
+├── 📜 main.py  # Arquivo principal do projeto
+├── 📜 README.md  # Documentação do projeto
+├── 📜 requirements.txt  # Dependências do projeto
+├── 📜 setup.py  # Configuração para empacotamento do projeto
+
 ```
 
 Com essa organização clara, o projeto facilita o desenvolvimento colaborativo e permite uma escalabilidade eficiente.
@@ -70,6 +81,14 @@ Com essa organização clara, o projeto facilita o desenvolvimento colaborativo 
    ```
 
 Pronto! A API estará rodando e pronta para ser testada. 🚀
+
+(Opcional) Rodar a Interface Gráfica.
+Se desejar utilizar a interface gráfica, execute:
+```bash
+   python gui/main_gui.py
+   ```
+
+Isso abrirá a aplicação com uma interface amigável para interação! 🎨✨
 
 ---
 
