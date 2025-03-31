@@ -1,4 +1,4 @@
-# 🚀 API de Cursos - FastAPI
+# 🚀 API de Cursos - FastAPI Course Manager
 
 Esta API foi desenvolvida utilizando **FastAPI** e **SQLAlchemy** para gerenciar um CRUD de cursos, armazenando os dados em um banco **PostgreSQL**. A estrutura do projeto segue uma organização modular, garantindo manutenção e escalabilidade
 
