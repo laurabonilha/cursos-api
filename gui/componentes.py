@@ -18,7 +18,7 @@ def create_label(parent, text):
 
 def create_entry(parent):
     '''Cria um campo de entrada'''
-    entry = tk.Entry(parent, font=('Poppins', 12),width=120)
+    entry = tk.Entry(parent, font=('Poppins', 12),width=20)
     entry.pack(pady=5)
     return entry
 

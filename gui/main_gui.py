@@ -12,11 +12,11 @@ class App:
         ctk.set_default_color_theme("blue")
 
         # Janela principal
-        janela = ctk.CTk()
-        janela.geometry("400x500")
-        janela.title("Menu de Opções")
+        self.janela = ctk.CTk()
+        self.janela.geometry("400x500")
+        self.janela.title("Menu de Opções")
 
-        pages = Pages(janela)
+        pages = Pages(self.janela)
         pages.mostrar_menu_principal()
 
     def run(self):
