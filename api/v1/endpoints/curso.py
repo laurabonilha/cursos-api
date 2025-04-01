@@ -70,7 +70,7 @@ async def put_curso(curso_id: int, curso: CursoSchema, db: AsyncSession = Depend
         else: 
             raise HTTPException(detail='Curso não encontrado', status_code=status.HTTP_404_NOT_FOUND)
         
-# DELETE curso
+# DELETE curso - informando ID
 @router.delete('/{curso_id}',  status_code=status.HTTP_204_NO_CONTENT)
 async def delete_curso(curso_id: int, db: AsyncSession = Depends(get_session)):
     async with db as session:
@@ -78,7 +78,7 @@ async def delete_curso(curso_id: int, db: AsyncSession = Depends(get_session)):
         result = await session.execute(query)
         curso_del = result.scalar_one_or_none()
         
-        # Se encontrado o curso, atualiza os dados conforme os novos dados informados
+        # Se encontrado o curso, deleta
         if curso_del:
             
             await session.delete(curso_del)
@@ -88,6 +88,23 @@ async def delete_curso(curso_id: int, db: AsyncSession = Depends(get_session)):
         
         else: 
             raise HTTPException(detail='Curso não encontrado', status_code=status.HTTP_404_NOT_FOUND)
+        
+# DELETE curso - informando nome
+@router.delete('/nome/{nome_curso}', status_code=status.HTTP_404_NOT_FOUND)
+async def delete_curso_por_nome(nome_curso: str, db: AsyncSession = Depends(get_session)):
+    async with db as session:
+        query = select(CursoModel).filter(CursoModel.titulo == nome_curso) # Realizando select no db pelo nome do curso
+        result = await session.execute(query)
+        curso_del_nome = result.scalar_one_or_none()
+        
+        # Se encontrar o curso, deleta
+        if curso_del_nome:
+            await session.delete(curso_del_nome)
+            await session.commit()
+            
+            return Response(status_code=status.HTTP_204_NO_CONTENT)
+        else:
+            raise HTTPException(detail='Curso com este nome não foi encontrado', status_code=status.HTTP_404_NOT_FOUND)
 
     
         

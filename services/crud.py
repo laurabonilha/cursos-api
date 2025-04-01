@@ -35,7 +35,7 @@ def atualizar_curso(id_curso: int, nome: str, aulas: int, horas: int):
     else:
         print('Erro ao atualizar curso')
         
-# Função para excluir um curso
+# Função para excluir um curso - ID
 def excluir_curso(id_curso: int):
     resposta = requests.delete(f"{API_URL}/{id_curso}")
     
@@ -43,3 +43,8 @@ def excluir_curso(id_curso: int):
         print('Curso excluído com sucesso')
     else:
         print('Erro ao excluir curso')
+        
+# Função para excluir um curso - Nome
+def excluir_curso_nome(nome_curso: str):
+    resposta = requests.delete(f"{API_URL}/nome/{nome_curso}")
+    return resposta.status_code == 204 #204 - No content
