@@ -188,6 +188,19 @@ A URL base para acessar os endpoints da API é: **http://localhost:8000/api/v1/c
 
 ---
 
+### 📌 Deletar um Curso por Nome
+- **Método:** `DELETE`
+- **URL:** `/nome/{nome_curso}`
+- **Status:** `204 NO CONTENT`
+
+Observações:
+1. A operação é case-sensitive (diferencia maiúsculas/minúsculas)
+2. Não requer corpo na requisição
+3. Retorna vazio em caso de sucesso (204)
+4. Para realizar a operação pela URL, deve usar encoding para espaços (ex: Curso%20de%20Python)
+
+---
+
 ## 🔗 Testando com Swagger
 
 Após rodar a API, você pode explorá-la de maneira interativa com a interface do **Swagger** em:
