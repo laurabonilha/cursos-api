@@ -32,9 +32,34 @@ def create_entry(parent):
     return entry
 
 
-def create_button(parent,text,command):
-    '''Cria um botão'''
-    button = tk.Button(parent,text=text, command=command, font=('Poppins', 12), bg='blue', fg='white')
+def create_button(parent, text, command):
+    '''Cria um botão estilizado'''
+    button = ctk.CTkButton(
+        parent,
+        text=text,
+        command=command,
+        font=('Poppins', 12, 'bold'),
+        fg_color='#4a7abc',
+        hover_color='#3a6aac',
+        text_color='white',
+        corner_radius=10,
+        border_width=0,
+        cursor='hand2'
+    )
     button.pack(pady=10)
     return button
+
+def create_message(parent, mensagem: str, sucesso: bool):
+    """Mostra uma mensagem temporária na interface"""
+    label = ctk.CTkLabel(
+        parent,
+        text=mensagem,
+        font=('Poppins', 12),
+        text_color=("#2ecc71" if sucesso else "#e74c3c")  # Verde/vermelho moderno
+    )
+    label.pack(pady=10)
+    parent.after(3000, label.destroy)  # Remove após 3 segundos
+    return label
+
+
 

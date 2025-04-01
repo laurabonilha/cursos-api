@@ -13,11 +13,8 @@ def adicionar_curso(titulo: str, aulas: int, horas: int):
     dados = {"titulo": titulo, "aulas": aulas, "horas": horas}
     resposta = requests.post(API_URL, json=dados)
     
-    if resposta.status_code == 201:
-        # Prints temporários até criar elemento gráfico
-        print('Curso adicionado com sucesso')
-    else: 
-        print('Erro ao adiconar curso')
+    # Alterando retorno da função para um boolean (será usado para a interface gráfica)
+    return resposta.status_code == 201
 
 # Função para obter todos os cursos      
 def obter_cursos():

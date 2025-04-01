@@ -6,7 +6,7 @@ import customtkinter as ctk
 # Importando as funções de request da API
 from services.crud import adicionar_curso, obter_cursos, excluir_curso, atualizar_curso
 # Importando os elementos comuns de interface gráfica
-from gui.componentes import create_button, create_entry, create_label
+from gui.componentes import create_button, create_entry, create_label, create_message
 
 
 class Pages:
@@ -26,18 +26,13 @@ class Pages:
         tela_menu = ctk.CTkFrame(self.root)
         tela_menu.pack(fill='both', expand=True, padx=20, pady=20)
         self.frame_atual = tela_menu
-        botao_adicionar = ctk.CTkButton(tela_menu, text="Adicionar Curso", command=self.abrir_tela_adicionar_curso)
-        botao_adicionar.pack(pady=20)
+        botao_adicionar = create_button(parent=tela_menu, text='Adicionar curso', command=self.abrir_tela_adicionar_curso)
         
-
-        botao_ver = ctk.CTkButton(tela_menu, text="Ver Cursos", command=self.abrir_tela_ver_cursos)
-        botao_ver.pack(pady=20)
-
-        botao_modificar = ctk.CTkButton(tela_menu, text="Modificar Curso")
-        botao_modificar.pack(pady=20)
-
-        botao_excluir = ctk.CTkButton(tela_menu, text="Excluir Curso")
-        botao_excluir.pack(pady=20)
+        botao_ver = create_button(parent=tela_menu, text='Ver cursos', command=self.abrir_tela_ver_cursos)
+        
+        botao_alterar = create_button(parent=tela_menu, text='Alterar curso', command=self.abrir_tela_adicionar_curso)
+        
+        botao_excluir = create_button(parent=tela_menu, text='Excluir curso', command=self.abrir_tela_adicionar_curso)
         
     def abrir_tela_ver_cursos(self):
         '''Tela para visualizar todos os cursos cadastrados'''
@@ -89,17 +84,20 @@ class Pages:
         
         # Definindo que os dados só serão enviados quando o botão for pressionado
         botao_enviar_curso = create_button(
-            parent=tela_adicionar_curso, 
-            text='enviar', 
-            command=lambda: adicionar_curso(
-                titulo=entry_nome_curso.get(), 
-                horas=entry_horas_curso.get(), 
-                aulas=entry_aulas_curso.get()
-            )
-        )
+            parent=tela_adicionar_curso,
+            text='Enviar',
+            command=lambda: (
+        create_message(tela_adicionar_curso, "✅ Sucesso!", True) 
+        if adicionar_curso(entry_nome_curso.get(), entry_horas_curso.get(), entry_aulas_curso.get()) 
+        else create_message(tela_adicionar_curso, "❌ Erro!", False)
+    ) if all([entry_nome_curso.get(), ...]) 
+    else create_message(tela_adicionar_curso, "⚠ Campos vazios!", False)
+)        
         
         # Adicionando botão para retorno ao menu principal
         botao_voltar = create_button(tela_adicionar_curso, text='Voltar', command=self.mostrar_menu_principal)
+        
+    
 
         
         
