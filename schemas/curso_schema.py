@@ -6,8 +6,8 @@ Classe criada para definir o esquema dos dados que serão passados no arquivo JS
 - horas (int)
 '''
 
-from typing import Optional, Field, model_validator
-from pydantic import BaseModel as SCBaseModel
+from typing import Optional
+from pydantic import BaseModel as SCBaseModel, Field, root_validator
 
 class CursoSchema(SCBaseModel):
     id: Optional[int] # ID será criado pelo próprio Banco de Dados
@@ -49,7 +49,7 @@ class CursoPatchSchema(SCBaseModel):
         description='Número de horas (1-400)'
     )
     
-    @model_validator(mode='before')
+    @root_validator
     def validar_campos(cls, values):
         if not any(values.values()):
             raise ValueError("Pelo menos um campo deve ser fornecido")

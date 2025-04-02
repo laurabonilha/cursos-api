@@ -48,3 +48,14 @@ def excluir_curso(id_curso: int):
 def excluir_curso_nome(nome_curso: str):
     resposta = requests.delete(f"{API_URL}/nome/{nome_curso}")
     return resposta.status_code == 204 #204 - No content
+
+# Função para verificar se o curso existe
+def valida_curso(nome_curso: str):
+    resposta = requests.get(f"{API_URL}/nome/{nome_curso}")
+    return resposta.status_code == 200 #200 - OK
+
+def altera_curso_completo(nome_curso: str, novo_nome: str, novo_aulas: int, novo_horas: int):
+    dados = {"titulo": novo_nome, "aulas": novo_aulas, "horas": novo_horas}
+    resposta = requests.put(f"{API_URL}/nome/{nome_curso}", json=dados)
+    
+    return resposta.status_code == 202

@@ -38,8 +38,7 @@ async def get_cursos(db: AsyncSession = Depends(get_session)):
         cursos: List[CursoModel] = result.scalars().all() # Extrai os valores dos resultados da consulta (os cursos) e all() converte o resultado em uma lista
         return cursos # A função retorna a lista de cursos, que será automaticamente convertida para o formato definido pelo CursoSchema devido ao parâmetro response_model=List[CursoSchema]
     
-
-# GET curso
+# GET curso - ID
 @router.get('/{curso_id}', response_model=CursoSchema, status_code=status.HTTP_200_OK)
 async def get_curso(curso_id: int, db: AsyncSession = Depends(get_session)):
     async with db as session:
@@ -49,13 +48,49 @@ async def get_curso(curso_id: int, db: AsyncSession = Depends(get_session)):
         
         if curso: return curso
         else: raise HTTPException(detail='Curso não encontrado', status_code=status.HTTP_404_NOT_FOUND)
+
+# GET curso - nome
+@router.get('/nome/{nome_curso}', response_model=CursoSchema, status_code=status.HTTP_200_OK)
+async def get_curso_nome(nome_curso: str, db: AsyncSession = Depends(get_session)):    
+    async with db as session:
+        nome_curso = nome_curso.strip()
+        query = select(CursoModel).filter(func.lower(CursoModel.titulo) == func.lower(nome_curso))
+        result = await session.execute(query)
+        curso = result.scalar_one_or_none()
+
+        if not curso:
+            raise HTTPException(status_code=404, detail="Curso não encontrado")
         
+        return curso
+  
 # PUT curso - informando ID
 @router.put('/{curso_id}', response_model=CursoSchema, status_code=status.HTTP_202_ACCEPTED)
 async def put_curso(curso_id: int, curso: CursoSchema, db: AsyncSession = Depends(get_session)):
     ''' Função para alteração completa de um curso - todos os campos (titulo, horas e aulas)'''
     async with db as session:
         query = select(CursoModel).filter(CursoModel.id == curso_id) #Filtrando pelo ID recebido
+        result = await session.execute(query)
+        curso_up = result.scalar_one_or_none()
+        
+        # Se encontrado o curso, atualiza os dados conforme os novos dados informados
+        if curso_up:
+            curso_up.titulo = curso.titulo
+            curso_up.aulas = curso.aulas
+            curso_up.horas = curso.horas
+            
+            await session.commit()
+             
+            return curso_up
+        
+        else: 
+            raise HTTPException(detail='Curso não encontrado', status_code=status.HTTP_404_NOT_FOUND)
+        
+# PUT curso - informando nome
+@router.put('/nome/{nome_curso}', response_model=CursoSchema, status_code=status.HTTP_202_ACCEPTED)
+async def put_curso_nome(nome_curso: str, curso: CursoSchema, db: AsyncSession = Depends(get_session)):
+    ''' Função para alteração completa de um curso - todos os campos (titulo, horas e aulas)'''
+    async with db as session:
+        query = select(CursoModel).filter(func.lower(CursoModel.titulo) == func.lower(nome_curso)) #Filtrando pelo nome recebido
         result = await session.execute(query)
         curso_up = result.scalar_one_or_none()
         
@@ -93,8 +128,6 @@ async def patch_curso_parcial(nome_curso: str, curso_update: CursoPatchSchema, d
         update_data = curso_update.model_dump(excluse_unset=True)
         for field, value in update_data.items():
             setattr(curso, field, value)
-
-
 
 # DELETE curso - informando ID
 @router.delete('/{curso_id}',  status_code=status.HTTP_204_NO_CONTENT)
